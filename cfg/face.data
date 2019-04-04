@@ -1,0 +1,6 @@
+classes=1
+train=data/annotations_darknet/train.txt
+valid=data/annotations_darknet/test.txt
+names=data/face.names
+backup=backup/
+eval=coco
