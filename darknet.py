@@ -208,6 +208,21 @@ def create_modules(blocks):
 
     return (net_info, module_list)
 
+def get_test_input(img_path="dog-cycle-car.png", img_size=416):
+    img = cv2.imread(img_path)
+    img = cv2.resize(img, (img_size, img_size))
+    img_ = img[:, :, ::-1].transpose((2, 0, 1))
+    img_ = img_[np.newaxis, :, :, :]/255.0
+    img_ = torch.from_numpy(img_).float()
+    img_ = Variable(img_)
+
+    return img_
+
+if __name__ == "__main__":
+    model = Darknet("./cfg/yolov3-face.cfg")
+    test_input = get_test_input()
+    pred = model(test_input, torch.cuda.is_available())
+    print (pred)
 
 if __name__ == "__main__":
     net = Darknet("./cfg/yolov3-tiny-face.cfg")
