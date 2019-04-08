@@ -129,7 +129,6 @@ def write_results(prediction, confidence, num_classes, nms_conf = 0.4):
         
         if image_pred_.shape[0] == 0:
             continue       
-#        
   
         #Get the various classes detected in the image
         img_classes = unique(image_pred_[:,-1])  # -1 index holds the class index
